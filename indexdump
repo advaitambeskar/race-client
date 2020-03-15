@@ -1,0 +1,26 @@
+const axios = require('axios');
+const fs = require('fs');
+const fileEvents = require('./fileEvents').fileEvents;
+
+var globalCopy = new require('./globalVariables')();
+var filePath = './res/file.txt';
+var filePath2 = './res/file2.txt';
+// Create a localserver
+// Check if the  file is updated every 1 min
+// update the data-list with the new file content
+// maintain the line number that is currently being accessed by the file
+function initializeGlobalVariable(filePath) {
+    const rawJson = JSON.parse(JSON.stringify(JSON.parse(fs.readFileSync(filePath)).Sheet1));
+    globalCopy.initData(rawJson);
+    globalCopy.initLine(0);
+}
+initializeGlobalVariable(filePath2);
+console.log('here');
+fileEvents.emit('checkNewEntry', [globalCopy.getLength(), filePath]);
+console.log("there");
+
+
+module.exports = {
+    globalVariables: globalCopy,
+    initializationFunction: initializeGlobalVariable
+};

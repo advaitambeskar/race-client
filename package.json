@@ -1,0 +1,19 @@
+{
+  "name": "raceenergy",
+  "version": "0.0.0",
+  "description": "RACEnergy RPS",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Advait Ambeskar",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "interval-promise": "^1.4.0"
+  }
+}
